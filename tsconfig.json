@@ -17,7 +17,21 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "power-input": [
+        "dist/power-input"
+      ],
+      "power-input/*": [
+        "dist/power-input/*"
+      ],
+      "power-components": [
+        "dist/power-components"
+      ],
+      "power-components/*": [
+        "dist/power-components/*"
+      ]
+    }
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,

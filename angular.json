@@ -120,6 +120,76 @@
           }
         }
       }
+    },
+    "PowerInput": {
+      "projectType": "library",
+      "root": "projects/power-input",
+      "sourceRoot": "projects/power-input/src",
+      "prefix": "power",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/power-input/tsconfig.lib.json",
+            "project": "projects/power-input/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/power-input/src/test.ts",
+            "tsConfig": "projects/power-input/tsconfig.spec.json",
+            "karmaConfig": "projects/power-input/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/power-input/tsconfig.lib.json",
+              "projects/power-input/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "power-components": {
+      "projectType": "library",
+      "root": "projects/power-components",
+      "sourceRoot": "projects/power-components/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/power-components/tsconfig.lib.json",
+            "project": "projects/power-components/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/power-components/src/test.ts",
+            "tsConfig": "projects/power-components/tsconfig.spec.json",
+            "karmaConfig": "projects/power-components/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/power-components/tsconfig.lib.json",
+              "projects/power-components/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }},
   "defaultProject": "power-input-app"
 }
