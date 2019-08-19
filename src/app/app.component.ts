@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'power-input-app';
+  loginActive=true;
+
+  setLoginActive(loginActive){
+    this.loginActive= loginActive;
+  }
 }

@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { PowerTabPanelComponent } from './power-tab-panel/power-tab-panel.component';
 import { PowerTabComponent } from './power-tab/power-tab.component';
 import { PowerModalModule } from './power-modal/power-modal.module';
+import { PowerMaskModule } from './power-mask/power-mask.module';
 
 @NgModule({
   declarations: [PowerFaInputComponent,
@@ -21,6 +22,7 @@ import { PowerModalModule } from './power-modal/power-modal.module';
             InputRefDirective, 
             PowerTabComponent, 
             PowerTabPanelComponent,
-            PowerModalModule]
+            PowerModalModule,
+            PowerMaskModule]
 })
 export class PowerComponentsModule { }

@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, TemplateRef } from '@angular/core';
 import { PowerModalService } from './power-modal.service';
+import { EventManager } from '@angular/platform-browser';
 
 @Component({
   selector: 'power-modal',
@@ -10,15 +11,32 @@ export class PowerModalComponent implements OnInit {
 
   @Input()
   body: TemplateRef<any>;
+  @Input()
+  hideOnEsc=true;
+  @Input()
+  hideOnClickOutside=true;
+  @Input()
+  context:any;
 
-  constructor(private modalService:PowerModalService) {
+  constructor(private modalService:PowerModalService, private eventManager:EventManager) {
 
+  }
+
+  onClickOutsideModal(){
+    if(this.hideOnClickOutside){
+      this.close();
+    }
   }
 
   ngOnInit() {
+    this.eventManager.addGlobalEventListener("window",'keyup.esc',()=>{
+      if(this.hideOnEsc){
+        this.close();
+      }
+    });
   }
 
-  closeModal(){
+  close(){
     this.modalService.close();
   }
 

@@ -18,13 +18,39 @@
 <body>
 <div class="container">
 
+    <h1>
+        Input Mask Examples
+    </h1>
+
+    <label>Phone:</label>
+    <input power-mask="(999) 999-9999">
+
+    <label>International Phone Number</label>
+    <input power-mask="+99 999 99 99 99">
+
+    <label>Credit Card</label>
+    <input power-mask="9999 9999 9999 9999">
+
+
+    <label>VAT Number</label>
+    <input power-mask="AA-9999 9999 9999 9999">
+
+    <label>Date</label>
+    <input power-mask="39/19/9999">
+
+    <label>Text</label>
+    <input value="ABCD">
+
+    <br><br>
   <div class="modal-buttons">
-      <button #loginButton>Login</button>
-      <button #signUpButton>Sign Up</button>
+      <button #loginButton (click)="setLoginActive(true)">Login</button>
+      <button #signUpButton (click)="setLoginActive(false)">Sign Up</button>
+      <button #testButton></button>
   </div>
-  <ng-template #authModalBody>
+  <ng-template #authModalBody let-title="title" let-loginTabActive="loginTabActive">
+      <h5>{{title}}</h5>
       <power-tab-panel #tabPanelInModal [style.width.px]="350" id="tab-panel">
-          <power-tab title="Login" #loginTab>
+          <power-tab title="Login" #loginTab [selected]="loginTabActive">
               <form>
                   <div class="form-field">
                       <power-fa-input id="email-field" icon="envelope">
@@ -38,7 +64,7 @@
                   </div>
               </form>
           </power-tab>
-          <power-tab title="Sign Up" #signUpTab>
+          <power-tab title="Sign Up" #signUpTab [selected]="!loginTabActive">
               <form>
                   <div class="form-field">
                       <label>Email:</label><input>
@@ -69,8 +95,13 @@
     </power-modal>
   </ng-template> -->
 
-  <power-modal  class="auth-modal" [body]="authModalBody" 
-  *powerModalOpenOnClick="[loginButton,signUpButton]">
+  <power-modal  #modal [hideOnEsc]="true" [hideOnClickOutside]="false" class="auth-modal" [body]="authModalBody" 
+  *powerModalOpenOnClick="[loginButton,signUpButton]" [context]="{title: 'Login or Sign Up',loginTabActive:loginActive}">
+  <i class="fa fa-times" (click)="modal.close()"></i>
+  </power-modal>
+
+  <power-modal id="testModal" *powerModalOpenOnClick="testButton">
+
   </power-modal>
 
   <!--

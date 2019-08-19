@@ -13,7 +13,8 @@ describe('AppComponent', () => {
   let component: AppComponent,
       fixture: ComponentFixture<AppComponent>,
       el:DebugElement,
-      tabPanel:DebugElement;
+      tabPanel:DebugElement,
+      modal:DebugElement;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -28,6 +29,7 @@ describe('AppComponent', () => {
     component = fixture.debugElement.componentInstance;
     el = fixture.debugElement;
     tabPanel=el.query(By.css('#tab-panel'));
+    modal = el.query(By.css('#testModal'));
     //console.log(tabPanel);
     fixture.detectChanges();
   });
@@ -68,4 +70,20 @@ describe('AppComponent', () => {
     expect(selectedButton).toBeTruthy();
     expect(selectedButton.textContent).toBe('Contact');
   }));
+
+  it('should create the test application',async(() => {
+    expect(component).toBeTruthy();
+  }));
+
+  it('should not add the modal to the page, if the modal is closed',async(() => {
+    expect(modal).toBeFalsy();
+  }));
+
+  it('should open the modal when the test button is clicked',async(() => {
+    fixture.nativeElement.querySelector("#testButton").click();
+    fixture.detectChanges();
+    const openModal = fixture.nativeElement.querySelector("#testModal");
+    expect(openModal).toBeTruthy();
+  }));
+
 });
